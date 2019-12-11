@@ -1,0 +1,47 @@
+<div class="my-4">
+  <!-- Page content -->
+  <div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-profile shadow">
+          <div class="row justify-content-center my-5">
+            <div class="col-lg-3 order-lg-2">
+              <div class="card-profile-image mt-5">
+                <a href="#">
+                  <img src="https://image.flaticon.com/icons/svg/2132/2132549.svg" class="rounded-circle">
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body mt-3">
+            <div class="text-center mt-5">
+              <h2>
+                {{teacher.nombre}} {{teacher.apellidos}}
+              </h2>
+              <h3>
+                <span class="font-weight-light"><i class="fa fa-calendar" aria-hidden="true"></i>
+                  {{teacher.fechaNacimiento | date}}</span>
+              </h3>
+              <div class="h5 font-weight-300">
+                <i class="fa fa-envelope" aria-hidden="true"></i> {{teacher.correo}}
+              </div>
+              <div class="h5 font-weight-300">
+                <i class="fa fa-phone" aria-hidden="true"></i> {{teacher.telefono}}
+              </div>
+            </div>
+          </div>
+          <div class="container row">
+            <div class="col-md-3" *ngFor="let subject of subjects">
+              <div class="card mb-3" style="background-color: #ffffff;">
+                <div class="card-body text-center">
+                  <h4 class="card-title">{{subject.nombre}} <small>Creditos {{subject.creditos}}</small> </h4>
+                  <p class="card-text">Grupo: {{subject.id_grupo}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

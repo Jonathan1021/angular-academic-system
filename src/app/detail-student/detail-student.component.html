@@ -1,0 +1,107 @@
+<div class="my-4">
+  <!-- Page content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="card card-profile shadow">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row justify-content-center my-5">
+                <div class="col-lg-3 order-lg-2">
+                  <div class="card-profile-image mt-5">
+                    <a href="#">
+                      <img src="https://image.flaticon.com/icons/svg/1256/1256661.svg" class="rounded-circle">
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body mt-3">
+                <div class="text-center mt-5">
+                  <h2>
+                    {{student.nombre}} {{student.apellidos}}
+                  </h2>
+                  <h3>
+                    <span class="font-weight-light"><i class="fa fa-calendar" aria-hidden="true"></i>
+                      {{student.fechaNacimiento | date}}</span>
+                  </h3>
+                  <div class="h5 font-weight-300">
+                    <i class="fa fa-envelope" aria-hidden="true"></i> {{student.correo}}
+                  </div>
+                  <div class="h5 font-weight-300">
+                    <i class="fa fa-phone" aria-hidden="true"></i> {{student.telefono}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div *ngIf="show">
+                <app-student-gmap [student]="student">
+                </app-student-gmap>
+              </div>
+            </div>
+          </div>
+          <div class="container row">
+            <div class="col-md-3" *ngFor="let subject of subjects">
+              <div class="card mb-3" style="background-color: #ffffff;">
+                <div class="card-body text-center">
+                  <h4 class="card-title">{{subject.nombre}} <small>Creditos {{subject.creditos}}</small> </h4>
+                  <p class="card-text">Grupo: {{subject.id_grupo}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card mb-3" style="background-color: #ffffff;">
+                <div class="card-body text-center ">
+                  <h3>
+                    <a href="#" data-toggle="modal" data-target="#exampleModalScrollable"><i class="fa fa-plus"
+                        aria-hidden="true"></i> Agregar</a>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container alert alert-danger" role="alert" *ngIf="alertError">
+            ¡Oops ocurrio un error!
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Suscribirse a grupo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="media text-muted pt-3" *ngFor="let group of groups">
+          <img class="mr-3" src="https://image.flaticon.com/icons/svg/476/476863.svg" alt="" width="48" height="48">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">ID: {{group.idGrupo}}</strong>
+            <label class="d-block" for=""><i class="fa fa-university" aria-hidden="true"></i> Salon:
+              {{group.salon}}</label>
+            <label class="d-block" for=""><i class="fa fa-clock-o" aria-hidden="true"></i> {{group.horaInicio}} -
+              {{group.horaFin}}</label>
+            <a class="btn btn-info" (click)="suscribeSubject(group)" data-dismiss="modal">Suscribirse</a>
+          </p>
+          <p>
+            <label for=""><i class="fa fa-address-book-o" aria-hidden="true"></i> Profesor: {{group.idProfesor}}</label>
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

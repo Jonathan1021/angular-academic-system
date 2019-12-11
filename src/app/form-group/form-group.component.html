@@ -1,0 +1,52 @@
+<div class="d-flex align-items-center p-3 my-3 bg-purple rounded shadow-sm">
+  <img class="mr-3" src="https://image.flaticon.com/icons/svg/1256/1256650.svg" alt="" width="48" height="48">
+  <div class="lh-100">
+    <h6 class="mb-0 lh-100">Grupos</h6>
+    <small>Unviersidad Unipanamericana</small>
+  </div>
+</div>
+
+<form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Codigo del grupo</label>
+    <input type="number" class="form-control" [(ngModel)]="group.idGrupo" name="idGrupo" autocomplete="off">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Seleccione profesor</label>
+    <select class="form-control" id="teacher" name="teacher" [(ngModel)]="group.idProfesor" required>
+      <option *ngFor="let teacher of teachers" [value]="teacher.id_profesor">
+        {{teacher.id_profesor}} - {{teacher.nombre}} {{teacher.apellidos}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Seleccione asignatura</label>
+    <select class="form-control" id="subject" name="subject" [(ngModel)]="group.idAsignatura" required>
+      <option *ngFor="let subject of subjects" [value]="subject.id_asignatura">
+        {{subject.id_asignatura}} - {{subject.nombre}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Salón</label>
+    <input type="text" class="form-control" [(ngModel)]="group.salon" name="salon" autocomplete="off">
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Hora Inicio</label>
+        <input type="text" class="form-control" [(ngModel)]="group.horaInicio" name="horaInicio" autocomplete="off">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Hora Fin</label>
+        <input type="text" class="form-control" [(ngModel)]="group.horaFin" name="horaFin" autocomplete="off">
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-info btn-sm mb-3" (click)="save()">Enviar</button>
+</form>
+<div class="alert alert-danger" role="alert" *ngIf="alertError">
+  ¡Oops ocurrio un error!
+</div>

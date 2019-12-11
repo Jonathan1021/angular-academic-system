@@ -1,0 +1,51 @@
+<div class="d-flex align-items-center p-3 my-3 bg-purple rounded shadow-sm">
+  <img class="mr-3" src="https://image.flaticon.com/icons/svg/167/167750.svg" alt="" width="48" height="48">
+  <div class="lh-100">
+    <h6 class="mb-0 lh-100">Profesores</h6>
+    <small>Unviersidad Unipanamericana</small>
+  </div>
+</div>
+
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Identificación</label>
+    <input type="text" class="form-control" [(ngModel)]="teacher.idProfesor" name="idProfesor" autocomplete="off">
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Nombres</label>
+        <input type="email" class="form-control" [(ngModel)]="teacher.nombre" name="nombre" autocomplete="off">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Apellidos</label>
+        <input type="email" class="form-control" id="" [(ngModel)]="teacher.apellidos" name="apellidos"
+          autocomplete="off">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" class="form-control" id="" [(ngModel)]="teacher.correo" name="email" autocomplete="off">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Telefono</label>
+        <input type="number" class="form-control" id="" [(ngModel)]="teacher.telefono" name="telefono"
+          autocomplete="off">
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Fecha nacimiento</label>
+    <input type="date" class="form-control" [(ngModel)]="teacher.fechaNacimiento" name="fechaNacimiento"
+      autocomplete="off">
+  </div>
+  <button type="submit" class="btn btn-info btn-sm mb-3" (click)="save()">Enviar</button>
+</form>
+<div class="alert alert-danger" role="alert" *ngIf="alertError">
+  ¡Oops ocurrio un error!
+</div>
